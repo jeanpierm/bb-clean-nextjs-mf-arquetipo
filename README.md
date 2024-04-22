@@ -22,7 +22,7 @@ cd container-app
 # 3. instalar dependencias
 npm install
 
-# 4. levantar micro #2 (desarrollo)
+# 4. levantar micro #1 (desarrollo)
 npm run dev
 
 # 5. (abrir una nueva terminal en la raíz del proyecto)
