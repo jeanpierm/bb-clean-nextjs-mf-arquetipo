@@ -1,4 +1,3 @@
-import React from "react";
 import { Province } from "../../domain/models/Province";
 
 interface ProvinceSelectedProps {

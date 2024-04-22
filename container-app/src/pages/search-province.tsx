@@ -2,10 +2,12 @@ import styles from "@sections/home/Home.module.css";
 import Head from "next/head";
 import Link from "next/link";
 import { Suspense, lazy, useEffect, useState } from "react";
-import { Province } from "../domain/models/Province";
+import ProvinceSelected from "../sections/provinces/ProvinceSelected";
 import Footer from "../sections/shared/Footer";
 import Nav from "../sections/shared/Nav";
-import ProvinceSelected from "../sections/provinces/ProvinceSelected";
+// @ts-expect-error is a federated module.
+import { useStore } from "geo/geoStore";
+import { Store } from "../infraestructure/store";
 
 const SearchProvince =
   typeof window !== "undefined"
@@ -15,18 +17,16 @@ const SearchProvince =
 
 export default function Home() {
   const [searchProvince, setSearchProvince] = useState(false);
-  const [provinceSelected, setProvinceSelected] = useState<Province | null>(
-    null
-  );
+  const selectedProvince = useStore((state: Store) => state.selectedProvince);
 
   useEffect(() => {
     setSearchProvince(true);
-
-    // establece datos obtenido desde el otro micro-frontend
-    window.addEventListener("provinceSelected", (e: any) => {
-      setProvinceSelected(e.detail);
-    });
   }, []);
+
+  useEffect(() => {
+    // valor de la provincia seleccionada desde el store del micro app-geo
+    console.log(selectedProvince);
+  }, [selectedProvince]);
 
   return (
     <>
@@ -38,6 +38,7 @@ export default function Home() {
       <Nav>nav from container-app</Nav>
       <main className={styles.main}>
         <h1 className={styles.title}>Search province</h1>
+        <p>(Comunicación de estados entre micros utilizando Zustand)</p>
 
         <br />
         <Link href="/">Go Back</Link>
@@ -50,7 +51,7 @@ export default function Home() {
         ) : null}
 
         <br />
-        <ProvinceSelected province={provinceSelected} />
+        <ProvinceSelected province={selectedProvince} />
       </main>
       <Footer>footer from container-app</Footer>
     </>

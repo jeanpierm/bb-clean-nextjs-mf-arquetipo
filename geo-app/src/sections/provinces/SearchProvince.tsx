@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { getProvinceByName } from "../../application/SearchProvinceByName";
+import useStore from "../../infraestructure/store";
 
 const SearchProvinces = () => {
   const [provinceName, setProvinceName] = useState("");
+  const setSelectedProvince = useStore((state) => state.setSelectedProvince);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!provinceName) {
@@ -14,9 +17,9 @@ const SearchProvinces = () => {
       alert("No se encontró provincia");
       return;
     }
-    window.dispatchEvent(
-      new CustomEvent("provinceSelected", { detail: province })
-    );
+
+    // guarda en store la provincia selecciona
+    setSelectedProvince(province);
   };
 
   return (

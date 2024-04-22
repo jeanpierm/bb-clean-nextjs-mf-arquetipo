@@ -7,6 +7,7 @@ Ejemplo de Module Federation (MicroFrontend) con NextJS y Clean Architecture.
 - Module Federation NextJS Plugin v8
 - NextJS v14
 - React v18
+- Zustand v4 (Gestor de estados)
 - Webpack v5
 - TypeScript v5
 - NodeJS v20
@@ -39,4 +40,4 @@ Enlaces:
 
 - Página principal de micro #1 con componentes y comunicación de datos (a través de custom events) con micro #2: <http://localhost:3000/>
 - Página remota de micro #2 en micro #1: <http://localhost:3000/provinces>
-- Página de micro #1 con componentes y comunicación de datos (a través de custom events) con micro #2: <http://localhost:3000/search-province>
+- Página de micro #1 con componentes y comunicación de datos (a través de store de estados (zustand)) con micro #2: <http://localhost:3000/search-province>
