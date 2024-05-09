@@ -2,7 +2,7 @@
 import { NextFederationPlugin } from "@module-federation/nextjs-mf";
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   webpack: (config, options) => {
     config.experiments = { topLevelAwait: true };
     const { isServer } = options;

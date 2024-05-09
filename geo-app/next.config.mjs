@@ -2,7 +2,7 @@
 import { NextFederationPlugin } from "@module-federation/nextjs-mf";
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     unoptimized: true,
   },
@@ -21,6 +21,7 @@ const nextConfig = {
         exposes: {
           "./searchProvince": "./src/sections/provinces/SearchProvince.tsx",
           "./myButton": "./src/sections/shared/MyButton.tsx",
+          "./customerForm": "./src/sections/customers/CustomerForm.tsx",
           "./geoStore": "./src/infraestructure/store.ts",
         },
         extraOptions: {
